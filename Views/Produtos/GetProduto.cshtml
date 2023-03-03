@@ -1,0 +1,38 @@
+﻿@model ControleEstoqueApp.Models.Produto
+@{
+    ViewData["Title"] = "GetProduto";
+    Layout = "~/Views/Shared/_produtosLayout.cshtml";
+}
+
+<h2>Obter produto pelo Id <a asp-action="Index" class="btn btn-sm btn-success">Retornar</a></h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="id">Id:</label>
+        <input class="form-control" name="id" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Obter Produto</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <h2>Produto</h2>
+     <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preco</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ProdutoId</td>
+                <td>@Model.Nome</td>
+                <td>@Model.Preco</td>
+            </tr>
+         </tbody>
+    </table>
+}
