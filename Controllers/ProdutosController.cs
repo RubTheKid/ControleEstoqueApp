@@ -60,14 +60,50 @@ public class ProdutosController : Controller
             using (var response = await httpClient.PostAsync(apiUrl, content))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(apiResponse);
-                Console.WriteLine(produto);
-                Console.WriteLine(content);
 
                 produtoAdd = JsonConvert.DeserializeObject<Produto>(apiResponse);
             }
         }
         return View(produtoAdd);
     }
+
+    //PUT
+    [HttpGet]
+    public async Task<IActionResult> UpdateProduto(int id)
+    {
+        Produto produto = new Produto();
+
+        using (var httpClient = new HttpClient())
+        {
+            using (var response = await httpClient.GetAsync(apiUrl+"/"+id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                produto = JsonConvert.DeserializeObject<Produto>(apiResponse);
+            }
+        }
+        return View(produto);
+    }
+    [HttpPost]
+    public async Task<IActionResult> UpdateProduto(Produto produto)
+    {
+        Produto produtoUpdate = new Produto();
+
+        using (var httpClient = new HttpClient())
+        {
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(produto.Nome.ToString()), "Nome");
+            content.Add(new StringContent(produto.Preco.ToString()), "Preco");
+
+            using (var response = await httpClient.PutAsync(apiUrl, content))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                ViewBag.Result = "Sucesso";
+                produtoUpdate = JsonConvert.DeserializeObject<Produto>(apiResponse);
+            }
+        }
+
+        return View(produto);
+    }
+
 
 }
