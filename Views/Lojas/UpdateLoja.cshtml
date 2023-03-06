@@ -1,0 +1,47 @@
+﻿@model ControleEstoqueApp.Models.Loja
+
+@{
+    ViewData["Title"] = "UpdateLoja";
+    Layout = "~/Views/Shared/_lojasLayout.cshtml";
+}
+
+<h2>Atualizar Loja <a asp-action="Index" class="btn btn-sm btn-success">Retornar</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="LojaId"></label>
+        <input class="form-control" asp-for="LojaId" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input class="form-control" asp-for="Nome" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Endereco"></label>
+        <input class="form-control" asp-for="Endereco" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
+    </div>
+</form>
+
+
+@if (ViewBag.Result == "Sucesso")
+{
+    <h2>Produto</h2>
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.LojaId</td>
+                <td>@Model.Nome</td>
+                <td>@Model.Endereco</td>
+            </tr>
+        </tbody>
+    </table>
+}

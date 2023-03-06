@@ -1,0 +1,12 @@
+﻿@model ControleEstoqueApp.Models.Loja
+@{
+    ViewData["Title"] = "DeleteLoja";
+    Layout = "~/Views/Shared/_lojasLayout.cshtml";
+}
+
+<h1>Deletar Loja</h1>
+
+<form asp-action="DeleteLoja" method="post">
+    <input type="hidden" value="@Model.LojaId" name="LojaId" />
+    <input type="image" src="/icon/close.png" />
+</form>
