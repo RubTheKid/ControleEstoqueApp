@@ -86,24 +86,41 @@ public class ProdutosController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateProduto(Produto produto)
     {
-        Produto produtoUpdate = new Produto();
+        Produto UpdateProduto = new Produto();
 
         using (var httpClient = new HttpClient())
         {
-            var content = new MultipartFormDataContent();
-            content.Add(new StringContent(produto.Nome.ToString()), "Nome");
-            content.Add(new StringContent(produto.Preco.ToString()), "Preco");
+            //var content = new MultipartFormDataContent();
+            var content = JsonContent.Create<Produto>(produto);
+            //content.Headers.Add("Access-Control-Allow-Origin", "*");
+            //content.Add(new StringContent(produto.ProdutoId.ToString()), "ProdutoId");
+            //content.Add(new StringContent(produto.Nome.ToString()), "Nome");
+            //content.Add(new StringContent(produto.Preco.ToString()), "Preco");
+            //content.Add(new StringContent(produto.DataCadastro.ToString()), "DataCadastro");
 
             using (var response = await httpClient.PutAsync(apiUrl, content))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 ViewBag.Result = "Sucesso";
-                produtoUpdate = JsonConvert.DeserializeObject<Produto>(apiResponse);
+                UpdateProduto = JsonConvert.DeserializeObject<Produto>(apiResponse);
             }
         }
 
-        return View(produto);
+        return View(UpdateProduto);
     }
 
 
+    //DELETE
+    [HttpPost]
+    public async Task<IActionResult> DeleteProduto(int ProdutoId)
+    {
+        using (var httpClient = new HttpClient())
+        {
+            using (var response = await httpClient.DeleteAsync(apiUrl + "/" + ProdutoId))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+            }
+        }
+        return RedirectToAction("Index");
+    }
 }

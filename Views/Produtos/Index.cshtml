@@ -25,18 +25,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var r in Model)
+        @foreach (var produto in Model)
         {
             <tr>
-                <td>@r.ProdutoId</td>
-                <td>@r.Nome</td>
-                <td>@r.Preco</td>
+                <td>@produto.ProdutoId</td>
+                <td>@produto.Nome</td>
+                <td>@produto.Preco</td>
                 <td>
-                    <a asp-action="UpdateProduto" asp-route-id="@r.ProdutoId"><img src="/icon/edit.png" /></a>
+                    <a asp-action="UpdateProduto" asp-route-id="@produto.ProdutoId"><img src="/icon/edit.png" /></a>
                 </td>
                 <td>
                     <form asp-action="DeleteProduto" method="post">
-                        <input type="hidden" value="@r.ProdutoId" name="ProdutoId" />
+                        <input type="hidden" value="@produto.ProdutoId" name="ProdutoId" />
                         <input type="image" src="/icon/close.png" />
                     </form>
                 </td>
