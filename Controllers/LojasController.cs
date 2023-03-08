@@ -90,13 +90,8 @@ public class LojasController : Controller
 
         using (var httpClient = new HttpClient())
         {
-            //var content = new MultipartFormDataContent();
+
             var content = JsonContent.Create<Loja>(loja);
-            //content.Headers.Add("Access-Control-Allow-Origin", "*");
-            //content.Add(new StringContent(produto.ProdutoId.ToString()), "ProdutoId");
-            //content.Add(new StringContent(produto.Nome.ToString()), "Nome");
-            //content.Add(new StringContent(produto.Preco.ToString()), "Preco");
-            //content.Add(new StringContent(produto.DataCadastro.ToString()), "DataCadastro");
 
             using (var response = await httpClient.PutAsync(apiUrl, content))
             {

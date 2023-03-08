@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ControleEstoqueApp.Models.Estoque>
+﻿@model IEnumerable<ControleEstoqueApp.Models.ItemEstoques>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_estoquesLayout.cshtml";
@@ -14,8 +14,9 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Produto</th>
-            <th>Loja</th>
+            @*<th>Produto</th>*@
+            <th>Quantidade</th>
+            @*<th>Loja</th>*@
             <th>Atualiza</th>
             <th>Deleta</th>
         </tr>
@@ -26,8 +27,9 @@
             <tr>
                 <td>@estoque.ItemEstoqueId</td>
                 <td>@estoque.Nome</td>
-                <td>@estoque.ProdutoId</td>
-                <td>@estoque.LojaId</td>
+                @*<td>@estoque.ProdutoId</td>*@
+                <td>@estoque.QuantidadeEstoque</td>
+                @*<td>@estoque.LojaId</td>*@
                 <td>
                     <a asp-action="UpdateEstoque" asp-route-id="@estoque.ItemEstoqueId"><img src="/icon/edit.png" /></a>
                 </td>

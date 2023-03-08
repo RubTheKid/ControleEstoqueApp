@@ -3,7 +3,14 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_produtosLayout.cshtml";
 }
-
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - ProdutoEstoqueWeb</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/ProdutoEstoqueWeb.styles.css" asp-append-version="true" />
+</head>
 <h1>Produtos</h1>
 
 <a asp-action="AddProduto" class="btn btn-sm btn-primary">Adicionar Produto</a>
