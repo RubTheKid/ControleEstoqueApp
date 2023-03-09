@@ -17,8 +17,8 @@
             @*<th>Produto</th>*@
             <th>Quantidade</th>
             @*<th>Loja</th>*@
-            <th>Atualiza</th>
-            <th>Deleta</th>
+            <th>Editar</th>
+            <th>Deletar</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,14 @@
                 <td>@estoque.Nome</td>
                 @*<td>@estoque.ProdutoId</td>*@
                 <td>@estoque.QuantidadeEstoque</td>
-                @*<td>@estoque.LojaId</td>*@
+                @*<td>
+                    @foreach (var item in Model)
+                    {
+                        <form asp-controller="Contact" asp-action="Create" method="post">
+                             @await Html.PartialAsync("_PartialName.cshtml")
+                        </form>
+                    }
+                </td>*@
                 <td>
                     <a asp-action="UpdateEstoque" asp-route-id="@estoque.ItemEstoqueId"><img src="/icon/edit.png" /></a>
                 </td>
@@ -41,5 +48,6 @@
                 </td>
             </tr>
         }
+      
     </tbody>
 </table>

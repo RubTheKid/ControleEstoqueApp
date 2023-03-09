@@ -1,11 +1,10 @@
 ﻿@model ControleEstoqueApp.Models.ItemEstoques
 @{
-    ViewData["Title"] = "DeleteLoja";
-    Layout = "~/Views/Shared/_lojasLayout.cshtml";
+    ViewData["Title"] = "DeleteEstoque";
+    Layout = "~/Views/Shared/_estoquesLayout.cshtml";
 }
 
 <h1>Deletar Estoque</h1>
-<a asp-action="Index" class="btn btn-sm btn-success">Retornar</a>
 
 <form asp-action="DeleteEstoque" method="post">
     <input type="hidden" value="@Model.ItemEstoqueId" name="ItemEstoqueId" />

@@ -1,0 +1,52 @@
+﻿@model ControleEstoqueApp.Models.ItemEstoques
+@{
+    ViewData["Title"] = "AddEstoque";
+    Layout = "~/Views/Shared/_estoquesLayout.cshtml";
+}
+
+
+<h1>Adicionar novo Estoque</h1>
+<a asp-action="Index" class="btn btn-sm btn-success">Retornar</a>
+
+<form asp-action="AddEstoque" method="post">
+    <div class="form-group">
+        <label for="Nome">Nome:</label>
+        <input class="form-control" name="Nome" />
+    </div>
+    <div class="form-group">
+        <label for="produtoId">Id do Produto:</label>
+        <input class="form-control" name="produtoId" />
+    </div>
+    <div class="form-group">
+        <label for="lojaId">Id da Loja:</label>
+        <input class="form-control" name="lojaId" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Adicionar</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <h2>Estoque Incluido</h2>
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Id do Produto</th>
+                <th>Id da Loja</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ItemEstoqueId</td>
+                <td>@Model.Nome</td>
+                <td>@Model.ProdutoId</td>
+                <td>@Model.LojaId</td>
+               
+            </tr>
+        </tbody>
+    </table>
+}
