@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+@{
+    ViewData["Title"] = "_exibeProdutos";
+    Layout = "~/Views/Shared/_produtosLayout.cshtml";
+}
+
+
+</head>
+
+
+<body>
+
+
+<h1>_exibeProdutos</h1>
+
+
+
+<div class="modal fade" id="exibeProdutos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Detalhe do estoque</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-sm table-striped table-bordered m-2">
+                    <thead>
+                        <tr>
+                            <td>Id do Produto</td>
+                            <td>Nome do Produto</td>
+                            <td>Quantidade Disponivel</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <td>10</td>
+                    <td>Caneta</td>
+                    <td>300</td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
